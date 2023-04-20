@@ -11,57 +11,73 @@ const btnEven = document.querySelector(".btn-even");
 const btnOdd = document.querySelector(".btn-odd");
 const answerParent = document.querySelector(".result");
 let myChoice;
-let inputNum;
+let inputChoice = document.querySelector("#number");
 let randomNum;
-let answer = document.createElement("p");
+let answerData = document.createElement("div");
+let answerVictory = document.createElement("p");
 
 btnEven.addEventListener("click", function () {
+	answerData.innerHTML = "";
+	answerVictory.innerHTML = "";
 	myChoice = true;
-	inputNum = parseInt(document.querySelector("#number").value);
+	inputNum = parseInt(inputChoice.value);
 
 	// execute code only if input is between 1 and 5
 	if (inputNum >= 1 && inputNum <= 5) {
 		makeResult(myChoice, inputNum);
+	} else {
+		answerData.innerHTML = "Valore non valido";
+		answerData.className = "";
+		answerParent.appendChild(answerData);
 	}
+	inputNum.innerHTML = "";
 });
 
 btnOdd.addEventListener("click", function () {
+	answerData.innerHTML = "";
+	answerVictory.innerHTML = "";
 	myChoice = false;
 	inputNum = parseInt(document.querySelector("#number").value);
 
 	// execute code only if input is between 1 and 5
 	if (inputNum >= 1 && inputNum <= 5) {
 		makeResult(myChoice, inputNum);
+	} else {
+		answerData.innerHTML = "Valore non valido";
+		answerData.className = "";
+		answerParent.appendChild(answerData);
 	}
 });
 
 function makeResult(parity, inputNum) {
+	let myText = "";
+	if (parity) {
+		myText = "Pari";
+	} else {
+		myText = "Dispari";
+	}
 	randomNum = makeRandom(1, 5);
 	let sum = inputNum + randomNum;
 	let sumParity = checkParity(sum);
 	if (parity && sumParity) {
-		console.log("hai vinto");
-	} else {
-		console.log("hai perso");
-	}
-}
+		answerData.innerHTML = `Tu hai scelto <strong>${myText}</strong> e il numero <strong>${inputNum}</strong>.<br> 
+		Il numero casuale è <strong>${randomNum}</strong> e quindi il risultato è <strong>${sum}</strong>:<br>`;
+		answerParent.appendChild(answerData);
 
-/*
-		answer.innerHTML = "Valore non valido";
-		answer.className = "";
+		answerVictory.innerHTML = "Hai vinto!";
+		answerVictory.className = "ok";
+		answerParent.appendChild(answerVictory);
 	} else {
-		revWord = invertWord(myWord);
-		if (isPalindrome(myWord, revWord)) {
-			answer.innerHTML = "La parola è palindroma!";
-			answer.className = "ok";
-		} else {
-			answer.innerHTML = "La parola non è palindroma...";
-			answer.className = "ko";
-		}
+		answerData.innerHTML = `Tu hai scelto <strong>${myText}</strong> e il numero <strong>${inputNum}</strong>.<br> 
+		Il numero casuale è <strong>${randomNum}</strong> e quindi il risultato è <strong>${sum}</strong>:<br>`;
+		answerParent.appendChild(answerData);
+
+		answerVictory.innerHTML = "Hai perso...";
+		answerVictory.className = "ko";
+		answerParent.appendChild(answerVictory);
 	}
-	answerParent.appendChild(answer);
-});
-*/
+	inputChoice.value = "";
+}
 
 function makeRandom(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
