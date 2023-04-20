@@ -57,6 +57,14 @@
 	text-transform: uppercase;
 	font-size: 2rem;
 	font-weight: bold;
-	color: rgb(255, 215, 129);
 	letter-spacing: 2px;
+	color: lightgrey;
+}
+
+.result .ok {
+	color: rgb(255, 215, 129);
+}
+
+.result .ko {
+	color: rgb(255, 91, 91);
 }

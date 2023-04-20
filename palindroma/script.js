@@ -7,28 +7,39 @@ Creare una funzione per capire se la parola inserita è palindroma
 const myButton = document.querySelector(".btn-submit");
 const answerParent = document.querySelector(".result");
 let myWord;
-let reversedWord;
+let answer = document.createElement("p");
 
 myButton.addEventListener("click", function () {
 	myWord = document.querySelector("input").value;
-	console.log(myWord);
-	console.log(typeof myWord);
 
-	if (typeof myWord == "string" && myWord.length > 0) {
-		revWord = invertWord(myWord);
-		console.log(revWord);
+	// execute code only on non-empty strings
+
+	if (myWord.length == 0) {
+		answer.innerHTML = "Valore non valido";
+		answer.className = "";
 	} else {
-		console.log("valore non valido");
+		revWord = invertWord(myWord);
+		if (isPalindrome(myWord, revWord)) {
+			answer.innerHTML = "La parola è palindroma!";
+			answer.className = "ok";
+		} else {
+			answer.innerHTML = "La parola non è palindroma...";
+			answer.className = "ko";
+		}
 	}
+	answerParent.appendChild(answer);
 });
 
 function invertWord(word) {
 	// cicle to reverse the word
 	let rev = "";
 	for (let i = myWord.length - 1; i >= 0; i--) {
-		console.log(i);
-		// console.log(myWord[i], rev[j]);
 		rev += myWord[i];
 	}
 	return rev;
+}
+
+function isPalindrome(word1, word2) {
+	console.log(word === revWord);
+	return myWord === revWord;
 }
