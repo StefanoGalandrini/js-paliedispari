@@ -7,16 +7,29 @@ Dichiariamo chi ha vinto.
 */
 
 // declare DOM variables
-const myButton = document.querySelector(".btn-submit");
+const btnEven = document.querySelector(".btn-even");
+const btnOdd = document.querySelector(".btn-odd");
 const answerParent = document.querySelector(".result");
-let myWord;
+let myChoice;
+let inputNum;
+let randomNum;
 let answer = document.createElement("p");
 
-myButton.addEventListener("click", function () {
-	myWord = document.querySelector("input").value;
+btnEven.addEventListener("click", function () {
+	myChoice = "even";
+	inputNum = parseInt(document.querySelector("#number").value);
 
-	// execute code only on non-empty strings
-	if (myWord.length == 0) {
+	if (inputNum >= 1 && inputNum <= 5) {
+		randomNum = makeRandom(1, 5);
+		let sum = inputNum + randomNum;
+		checkParity(sum);
+		console.log(checkParity(sum));
+
+		console.log(inputNum, randomNum, sum);
+	}
+});
+
+/*
 		answer.innerHTML = "Valore non valido";
 		answer.className = "";
 	} else {
@@ -31,17 +44,12 @@ myButton.addEventListener("click", function () {
 	}
 	answerParent.appendChild(answer);
 });
+*/
 
-function invertWord(word) {
-	// cicle to reverse the word
-	let rev = "";
-	for (let i = myWord.length - 1; i >= 0; i--) {
-		rev += myWord[i];
-	}
-	return rev;
+function makeRandom(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function isPalindrome(word1, word2) {
-	console.log(word === revWord);
-	return myWord === revWord;
+function checkParity(number) {
+	return number % 2 === 0;
 }
