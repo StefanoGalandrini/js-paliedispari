@@ -13,7 +13,6 @@ myButton.addEventListener("click", function () {
 	myWord = document.querySelector("input").value;
 
 	// execute code only on non-empty strings
-
 	if (myWord.length == 0) {
 		answer.innerHTML = "Valore non valido";
 		answer.className = "";
