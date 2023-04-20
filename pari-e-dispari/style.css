@@ -23,6 +23,16 @@
 	font-size: 1.5rem;
 }
 
+.container #number {
+	width: 40%;
+	display: block;
+	margin-inline: auto;
+	font-size: 1.2rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 10px;
+}
+
+
 .container button {
 	flex: 0 0 50%;
 	margin: 3rem 3rem;

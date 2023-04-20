@@ -19,15 +19,30 @@ btnEven.addEventListener("click", function () {
 	myChoice = "even";
 	inputNum = parseInt(document.querySelector("#number").value);
 
+	// execute code only if input is between 1 and 5
 	if (inputNum >= 1 && inputNum <= 5) {
-		randomNum = makeRandom(1, 5);
-		let sum = inputNum + randomNum;
-		checkParity(sum);
-		console.log(checkParity(sum));
-
-		console.log(inputNum, randomNum, sum);
+		makeResult(myChoice, inputNum);
 	}
 });
+
+btnOdd.addEventListener("click", function () {
+	myChoice = "odd";
+	inputNum = parseInt(document.querySelector("#number").value);
+
+	// execute code only if input is between 1 and 5
+	if (inputNum >= 1 && inputNum <= 5) {
+		makeResult(myChoice, inputNum);
+	}
+});
+
+function makeResult(parity, number) {
+	randomNum = makeRandom(1, 5);
+	let sum = inputNum + randomNum;
+	checkParity(sum);
+	console.log(checkParity(sum));
+
+	console.log(inputNum, randomNum, sum);
+}
 
 /*
 		answer.innerHTML = "Valore non valido";
