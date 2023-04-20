@@ -1,0 +1,14 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 80vw;
+	height: 80vh;
+	background-color: #002125;
+	margin-inline: auto;
+	padding: 3rem;
+	color: white;
+}
