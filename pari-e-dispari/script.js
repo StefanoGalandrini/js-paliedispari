@@ -16,7 +16,7 @@ let randomNum;
 let answer = document.createElement("p");
 
 btnEven.addEventListener("click", function () {
-	myChoice = "even";
+	myChoice = true;
 	inputNum = parseInt(document.querySelector("#number").value);
 
 	// execute code only if input is between 1 and 5
@@ -26,7 +26,7 @@ btnEven.addEventListener("click", function () {
 });
 
 btnOdd.addEventListener("click", function () {
-	myChoice = "odd";
+	myChoice = false;
 	inputNum = parseInt(document.querySelector("#number").value);
 
 	// execute code only if input is between 1 and 5
@@ -35,13 +35,15 @@ btnOdd.addEventListener("click", function () {
 	}
 });
 
-function makeResult(parity, number) {
+function makeResult(parity, inputNum) {
 	randomNum = makeRandom(1, 5);
 	let sum = inputNum + randomNum;
-	checkParity(sum);
-	console.log(checkParity(sum));
-
-	console.log(inputNum, randomNum, sum);
+	let sumParity = checkParity(sum);
+	if (parity && sumParity) {
+		console.log("hai vinto");
+	} else {
+		console.log("hai perso");
+	}
 }
 
 /*
